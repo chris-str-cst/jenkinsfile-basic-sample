@@ -23,6 +23,9 @@ node {
       	stage ('Deploy') {
             sh "echo 'shell scripts to deploy to server...'"
       	}
+	stage ('Trigger second Job') {
+		build('second_job')
+	}
     } catch (err) {
         currentBuild.result = 'FAILED'
         throw err
